@@ -55,7 +55,7 @@
            EmployeeDAO dao= new EmployeeDAO(DBConnect.getConn());
            List<Employee> list=dao.getEmpByEmailPassword(Email,Password);
            boolean view=false;
-           
+           int AT=0;
            for(Employee E:list)
            {%>
      
@@ -73,6 +73,7 @@
               if(hpe.equals("Yes"))
               {
             	view=true;
+                AT=E.getAchievedTarget();
               }
           
           %>
@@ -116,7 +117,7 @@
             	    
         <%
          	HolidayDAO dao1=new HolidayDAO(DBConnect.getConn());
-         	List<HolidayPack> list1 = dao1.getHolidayPackByAt(60000);
+         	List<HolidayPack> list1 = dao1.getHolidayPackByAt(AT);
          	for(HolidayPack E1:list1)
      
      {%>
